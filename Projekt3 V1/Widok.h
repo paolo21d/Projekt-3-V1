@@ -7,6 +7,7 @@ protected:
 	Dokument * dokument;
 
 	virtual void wyswietl() = 0;
+	virtual void wczytaj() = 0;
 };
 
 #endif // !WIDOK_H
