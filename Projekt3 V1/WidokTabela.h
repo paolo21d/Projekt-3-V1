@@ -6,5 +6,6 @@ class WidokTabela: public Widok
 public:
 	WidokTabela();
 	~WidokTabela();
+	void wyswietl();
 };
 

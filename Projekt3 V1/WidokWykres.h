@@ -6,5 +6,6 @@ class WidokWykres: public Widok
 public:
 	WidokWykres();
 	~WidokWykres();
+	void wyswietl();
 };
 

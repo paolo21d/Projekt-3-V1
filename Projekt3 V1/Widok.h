@@ -4,10 +4,11 @@
 #include "Dokument.h"
 class Widok {
 protected:
-	Dokument * dokument;
-
+	Dokument * doc;
+public:
 	virtual void wyswietl() = 0;
-	virtual void wczytaj() = 0;
+	virtual ~Widok() = 0;
+	//virtual void wczytaj() = 0;
 };
 
 #endif // !WIDOK_H

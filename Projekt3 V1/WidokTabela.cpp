@@ -10,3 +10,7 @@ WidokTabela::WidokTabela()
 WidokTabela::~WidokTabela()
 {
 }
+
+void WidokTabela::wyswietl()
+{
+}
