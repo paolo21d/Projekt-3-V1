@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <iomanip>
 using namespace std;
 
 WidokTabela::WidokTabela()
@@ -16,9 +17,16 @@ void WidokTabela::wyswietl()
 {
 	Dochody * wsk = dynamic_cast<Dochody*> (doc);
 	vector<DochodJednostkowy> const &t = wsk->getTabela();
+	if (t.size() == 0) {
+		cout << "Brak danych." << endl;
+		return;
+	}
+	cout << endl << "########## Widok tabeli:" << endl;
+	cout << setw(15) << "Imie" << setw(15) << "Nazwisko" << setw(10) << "Data" << setw(20) << "Kwota" << endl;
 	for (unsigned i = 0; i < t.size(); ++i) {
 		//cout << t[i];
-		cout << t[i].nazwisko << " " << t[i].imie << "\tData: " << t[i].data << "\tKwota:" << t[i].kwota << endl;
+		//cout <<setw(10)<< t[i].imie << " " << t[i].nazwisko << "\tData: " << t[i].data << "\tKwota:" << t[i].kwota << endl;
+		cout << setw(15) << t[i].imie << setw(15) << t[i].nazwisko <<  setw(10) << t[i].data << setw(20) << t[i].kwota << endl;
 	}
 }
 
@@ -48,8 +56,9 @@ void WidokTabela::wczytaj()
 	stringstream s;
 	s << data.substr(0, 2);
 	s >> m;
-	s << data.substr(4, 4);
-	s >> r;
+	stringstream s2;
+	s2 << data.substr(3, 4);
+	s2 >> r;
 	if (m < 1 || m>12 || r < 1) {
 		cout << "Blad danych!" << endl;
 		return;

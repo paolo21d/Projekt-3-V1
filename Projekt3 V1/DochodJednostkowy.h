@@ -10,8 +10,8 @@ public:
 	std::string data;
 	double kwota;
 	bool operator<(DochodJednostkowy const &d) {
-		std::string id1 = this->nazwisko + this->imie;
-		std::string id2 = d.nazwisko + d.imie;
+		std::string id1 = this->nazwisko + this->imie + this->data.substr(3,4) + this->data.substr(0,2);
+		std::string id2 = d.nazwisko + d.imie + d.data.substr(3, 4) + d.data.substr(0, 2);
 		return id1 < id2;
 	}
 	DochodJednostkowy(std::string i, std::string n, std::string d, double k) : imie(i), nazwisko(n), data(d), kwota(k) {};

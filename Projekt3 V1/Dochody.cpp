@@ -1,5 +1,5 @@
 #include "Dochody.h"
-
+#include <algorithm>
 
 
 Dochody::Dochody()
@@ -23,6 +23,7 @@ bool Dochody::dodajDochod(DochodJednostkowy dochod)
 			return false; //juz jest dochod dla danego pracownika w podanym miesiacu
 	}
 	TabelaDochodow.push_back(dochod);
+	sort(TabelaDochodow.begin(), TabelaDochodow.end());
 	odswiezWidoki();
 	return true;
 }

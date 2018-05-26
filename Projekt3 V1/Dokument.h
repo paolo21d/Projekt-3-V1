@@ -13,7 +13,7 @@ protected:
 		return true;
 	}
 public:
-	friend class Widok;
+	//friend class Widok;
 	bool dodajWidok(Widok *w){
 		//najpierw trzeba zaalowokac pamiec na widok i przekazac do tej funkcji juz wskaznik na zaalkowana pamiec
 		//WidokTabela *wt = new WidokTabela;
@@ -32,9 +32,9 @@ public:
 		return false;
 	}
 	virtual ~Dokument(){
-		for (unsigned i = 0; i < listaWidokow.size(); ++i) {
+		/*for (unsigned i = 0; i < listaWidokow.size(); ++i) {
 			delete listaWidokow[i];
-		}
+		}*/
 	}
 };
 #endif // !DOKUMENT_H
