@@ -24,8 +24,9 @@ int main() {
 		cout << "Blad!" << endl;
 	while (opcja) {
 		cout << "Wybor opcji:" << endl;
-		cout << "1 Pokaz widoki." << endl;
-		cout << "2 Dodaj dane." << endl;
+		/*cout << "1 Pokaz widoki." << endl;
+		cout << "2 Dodaj dane." << endl;*/
+		cout << "1 Dodaj dane. " << endl;
 		cout << "0 Wyjscie." << endl;
 
 		while (!(cin >> opcja)) {
@@ -33,10 +34,10 @@ int main() {
 			cin.clear();
 			cin.ignore(1024, '\n');
 		}
-		if (opcja == 1) {
+		/*if (opcja == 1) {
 			
-		}
-		else if (opcja == 2) {
+		}*/
+		 if (opcja == 1) {
 			wt->wczytaj();
 		}
 	}

@@ -1,0 +1,13 @@
+Pawe³ Œwi¹tkowski grupa 2I5
+Projekt 3 dokumentacja
+Temat: Stworzyæ system klas pozwalaj¹cy na implementacjê programów przy u¿yciu modelu dokument-widok. Nastêpnie interaktywny program ilustruj¹cy sposób wykorzystania klas (jeden dokument i 2 widoki).
+Rozwiniêcie tematu projektu: 
+Klasa Dokument przechowuje dane oraz operuje na nich, natomiast klasa Widok s³u¿y do wyœwietlania danych zawartych w Dokumencie. Dany Dokument mo¿e byæ obs³ugiwany przez wiele widoków, np.: wyœwietlania w postaci tabeli, wykresu s³upkowego, wykresu ko³owego itp. 
+Interaktywny program s³u¿¹cy do prezentacji sposobu u¿ycia klas przechowuje dochody pracowników z podanych miesiêcy a nastêpnie wyœwietla je w postaci 1) wykresu s³upkowego 2) tabeli.
+Powsta³e klasy zgodne z za³o¿eniami modelu dokument-widok:
+1.	Dokument – klasa, która przechowuje dane i operuje na nich; zawiera vector<*Widok> trzymaj¹cy wskaŸniki do mo¿liwych widoków danego dokumentu; metody: odswiezWidoki(), dodajWidok(), usunWidok()
+2.	Widok – klasa abstrakcyjna, która s³u¿y do prezentowania danych zawartych w Dokumencie; zawiera wskaŸnik na dokument *Dokument którego widokiem jest; metody wirtualne: wyœwietl() oraz wczytaj()
+3.	Dochody – klasa dziedzicz¹ca po klasie Dokument; zawiera dane o dochodach pracowników w podanych miesi¹cach
+4.	WidokWykres – klasa dziedzicz¹ca po klasie Widok; prezentuje dane zawarte w klasie Dochody w postaci wykresu dochodów pracowników 
+5.	WidokTabela – klasa dziedzicz¹ca po klasie Widok; prezentuje dane zawarte w klasie Dochody w postaci tabeli dochodów oraz umo¿liwia wczytywanie danych, które umieszcza w klasie Dochody
+6.	DochodJednostkowy – struktura która zawiera dane o pojedynczym dochodzie; zawiera pola: string imie, string nazwisko, string data, double dochod

@@ -17,7 +17,7 @@ WidokWykres::~WidokWykres()
 
 void WidokWykres::wyswietl()
 {
-	const int SZEROKOSC_WYKRESU = 50;
+	const int SZEROKOSC_WYKRESU = 70;
 	Dochody * wsk = dynamic_cast<Dochody*> (doc);
 	vector<DochodJednostkowy> const &t = wsk->getTabela();
 	if (t.size() == 0) {

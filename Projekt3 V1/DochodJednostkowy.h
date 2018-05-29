@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 
-class DochodJednostkowy {
+struct DochodJednostkowy {
 public:
 	std::string imie, nazwisko;
 	std::string data;
