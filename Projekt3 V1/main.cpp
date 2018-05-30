@@ -1,8 +1,6 @@
 /********
-
 Projekt 3 PROI -> model Dokument-Widok
 Autor: Pawel Swiatkowski
-
 ********/
 
 #include <iostream>
