@@ -11,8 +11,8 @@
 class Dochody:public Dokument
 {
 	
-	std::vector <DochodJednostkowy> TabelaDochodow;
-	//std::vector <std::vector<double>> TabelaDochodow;
+	std::vector <DochodJednostkowy> tabelaDochodow;
+	//std::vector <std::vector<double>> tabelaDochodow;
 
 
 	//virtual bool odswiezWidoki();
@@ -24,6 +24,7 @@ public:
 	~Dochody();
 	std::vector <DochodJednostkowy> const & getTabela()const;
 	bool dodajDochod(DochodJednostkowy dochod);
+	friend std::ostream& operator<<(std::ostream &os, const Dochody & d);
 };
 
 #endif //DOCHODY_H

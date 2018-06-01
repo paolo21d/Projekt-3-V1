@@ -1,6 +1,6 @@
 #include "Dochody.h"
 #include <algorithm>
-
+#include <iostream>
 
 Dochody::Dochody()
 {
@@ -14,18 +14,25 @@ Dochody::~Dochody()
 }
 std::vector<DochodJednostkowy> const & Dochody::getTabela() const
 {
-	return TabelaDochodow;
+	return tabelaDochodow;
 }
 bool Dochody::dodajDochod(DochodJednostkowy dochod)
 {
-	for (unsigned i = 0; i < TabelaDochodow.size(); ++i) {
-		if (TabelaDochodow[i].imie == dochod.imie && TabelaDochodow[i].nazwisko == dochod.nazwisko && TabelaDochodow[i].data == dochod.data)
+	for (unsigned i = 0; i < tabelaDochodow.size(); ++i) {
+		if (tabelaDochodow[i].imie == dochod.imie && tabelaDochodow[i].nazwisko == dochod.nazwisko && tabelaDochodow[i].data == dochod.data)
 			return false; //juz jest dochod dla danego pracownika w podanym miesiacu
 	}
-	TabelaDochodow.push_back(dochod);
-	sort(TabelaDochodow.begin(), TabelaDochodow.end());
+	tabelaDochodow.push_back(dochod);
+	sort(tabelaDochodow.begin(), tabelaDochodow.end());
 	odswiezWidoki();
 	return true;
+}
+std::ostream& operator<<(std::ostream &os, const Dochody & d) {
+	for (unsigned i = 0; i < d.tabelaDochodow.size(); ++i) {
+		const DochodJednostkowy & dj = d.tabelaDochodow[i];
+		os << dj.nazwisko << " " << dj.imie << " " << dj.data << " " << dj.kwota << std::endl;
+	}
+	return os;
 }
 /*bool Dochody::odswiezWidoki()
 {

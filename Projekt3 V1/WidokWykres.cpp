@@ -3,6 +3,7 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
+#include <typeinfo>
 using namespace std;
 
 
@@ -18,7 +19,17 @@ WidokWykres::~WidokWykres()
 void WidokWykres::wyswietl()
 {
 	const int SZEROKOSC_WYKRESU = 70;
-	Dochody * wsk = dynamic_cast<Dochody*> (doc);
+	const int SZEROKOSC_WYK1 = 15;
+	const int SZEROKOSC_WYK2 = 10;
+	Dochody * wsk;
+	try {
+		wsk = dynamic_cast<Dochody*> (doc);
+	}
+	catch (bad_cast& bc) {
+		cerr << "bad_cast: " << bc.what() << endl;
+		cout << "Blad rzutowania!" << endl;
+		return;
+	}
 	vector<DochodJednostkowy> const &t = wsk->getTabela();
 	if (t.size() == 0) {
 		cout << "Brak danych." << endl;
@@ -32,12 +43,12 @@ void WidokWykres::wyswietl()
 	cout << endl << "########## Widok wykresu: " << endl;
 	//cout << SZEROKOSC_WYKRESU << "* = " << kwmax << endl;
 	//cout << "Imie\tNazwisko\tData\tKwota" << endl;
-	cout << setw(15) << "Imie" << setw(15) << "Nazwisko" << setw(10) << "Data" << setw(max(SZEROKOSC_WYKRESU/2, 8)) << "Kwota (" << SZEROKOSC_WYKRESU << "* = " << kwmax << ")" << endl;
+	cout << setw(SZEROKOSC_WYK1) << "Imie" << setw(SZEROKOSC_WYK1) << "Nazwisko" << setw(SZEROKOSC_WYK2) << "Data" << setw(max(SZEROKOSC_WYKRESU/2, 8)) << "Kwota (" << SZEROKOSC_WYKRESU << "* = " << kwmax << ")" << endl;
 	for (unsigned i = 0; i < t.size(); ++i) {
-		int ile = (t[i].kwota / kwmax) * SZEROKOSC_WYKRESU;
+		unsigned ile = (t[i].kwota / kwmax) * SZEROKOSC_WYKRESU;
 		if (ile == 0) ile = 1;
 		//cout << setw(10) << t[i].imie << "\t" << t[i].nazwisko << "\t" << t[i].data << "\t";
-		cout << setw(15) << t[i].imie << setw(15) << t[i].nazwisko << setw(10) << t[i].data<<" ";
+		cout << setw(SZEROKOSC_WYK1) << t[i].imie << setw(SZEROKOSC_WYK1) << t[i].nazwisko << setw(SZEROKOSC_WYK1) << t[i].data<<" ";
 		for (unsigned j = 0; j < ile; ++j) { cout << "*"; }
 		cout << endl;
 	}
@@ -45,5 +56,6 @@ void WidokWykres::wyswietl()
 
 void WidokWykres::wczytaj()
 {
-	cout << "Dla tego widoku nie ma mozliwosci wczytywania danych." << endl;
+	throw "Dla tego widoku nie ma mozliwosci wczytywania danych!";
+	//cout << "Dla tego widoku nie ma mozliwosci wczytywania danych." << endl;
 }

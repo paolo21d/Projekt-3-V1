@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include <iomanip>
+#include <typeinfo>
 using namespace std;
 
 WidokTabela::WidokTabela()
@@ -15,18 +16,29 @@ WidokTabela::~WidokTabela()
 
 void WidokTabela::wyswietl()
 {
-	Dochody * wsk = dynamic_cast<Dochody*> (doc);
+	const int SZEROKOSC_WYK1 = 15;
+	const int SZEROKOSC_WYK2 = 10;
+	const int SZEROKOSC_WYK3 = 20;
+	Dochody * wsk;
+	try {
+		wsk = dynamic_cast<Dochody*> (doc);
+	}
+	catch (bad_cast& bc) {
+		cerr << "bad_cast: " << bc.what() << endl;
+		cout << "Blad rzutowania!" << endl;
+		return;
+	}
 	vector<DochodJednostkowy> const &t = wsk->getTabela();
 	if (t.size() == 0) {
 		cout << "Brak danych." << endl;
 		return;
 	}
 	cout << endl << "########## Widok tabeli:" << endl;
-	cout << setw(15) << "Imie" << setw(15) << "Nazwisko" << setw(10) << "Data" << setw(20) << "Kwota" << endl;
+	cout << setw(SZEROKOSC_WYK1) << "Imie" << setw(SZEROKOSC_WYK1) << "Nazwisko" << setw(SZEROKOSC_WYK2) << "Data" << setw(SZEROKOSC_WYK3) << "Kwota" << endl;
 	for (unsigned i = 0; i < t.size(); ++i) {
 		//cout << t[i];
 		//cout <<setw(10)<< t[i].imie << " " << t[i].nazwisko << "\tData: " << t[i].data << "\tKwota:" << t[i].kwota << endl;
-		cout << setw(15) << t[i].imie << setw(15) << t[i].nazwisko <<  setw(10) << t[i].data << setw(20) << t[i].kwota << endl;
+		cout << setw(SZEROKOSC_WYK1) << t[i].imie << setw(SZEROKOSC_WYK1) << t[i].nazwisko <<  setw(SZEROKOSC_WYK2) << t[i].data << setw(SZEROKOSC_WYK3) << t[i].kwota << endl;
 	}
 }
 
@@ -72,7 +84,15 @@ void WidokTabela::wczytaj()
 		cout << "Blad danych!" << endl;
 		return;
 	}
-	Dochody * wsk = dynamic_cast<Dochody*> (doc);
+	Dochody * wsk;
+	try {
+		wsk = dynamic_cast<Dochody*> (doc);
+	}
+	catch (bad_cast& bc) {
+		cerr << "bad_cast: " << bc.what() << endl;
+		cout << "Blad rzutowania!" << endl;
+		return;
+	}
 	DochodJednostkowy dj(imie, nazwisko, data, kwota);
 	if (wsk->dodajDochod(dj) == false) {
 		cout << "Juz zostaj dodany dochod dla podanego pracownika w danym miesiacu!" << endl;
