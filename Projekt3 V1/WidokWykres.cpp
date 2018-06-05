@@ -1,4 +1,5 @@
 #include "WidokWykres.h"
+#include "Wyjatek.h"
 #include <iostream>
 #include <vector>
 #include <iomanip>
@@ -56,6 +57,7 @@ void WidokWykres::wyswietl()
 
 void WidokWykres::wczytaj()
 {
-	throw "Dla tego widoku nie ma mozliwosci wczytywania danych!";
+	//throw "Dla tego widoku nie ma mozliwosci wczytywania danych!";
+	throw Wyjatek("Dla tego widoku nie ma mozliwosci wczytywania danych", 1);
 	//cout << "Dla tego widoku nie ma mozliwosci wczytywania danych." << endl;
 }

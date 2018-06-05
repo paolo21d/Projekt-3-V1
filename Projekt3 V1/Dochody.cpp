@@ -8,9 +8,10 @@ Dochody::Dochody()
 
 Dochody::~Dochody()
 {
-	for (unsigned i = 0; i < listaWidokow.size(); ++i) {
+	/*for (unsigned i = 0; i < listaWidokow.size(); ++i) {
 		delete listaWidokow[i];
-	}
+	}*/
+	//usuwac widoki tam gdzie sie je alokowalo ->main
 }
 std::vector<DochodJednostkowy> const & Dochody::getTabela() const
 {

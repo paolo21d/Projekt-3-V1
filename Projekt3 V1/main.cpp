@@ -60,5 +60,7 @@ int main() {
 			 }
 		}
 	}
+	delete wt;
+	delete ww;
 	return 0;
 }
